@@ -1,5 +1,4 @@
 class People:
-
     def __init__(self, __name='', __tax_no='', over_18=True or False):
         self.__name = __name
         self.__tax_no = __tax_no
@@ -14,3 +13,8 @@ class People:
     def get_over_18(self):
         return self.over_18
 
+# person1 = People('Marcus', '236547A', True)
+#
+# print(person1.get_name())
+# print(person1.get_tax_no())
+# print(person1.get_over_18())

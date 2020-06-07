@@ -1,15 +1,12 @@
-from .people_class import People
-# marcus
-# passengers should inherit from people and generate a the report
+from project.people_class import *
 
 
 class Passengers(People):
-    def __init__(self, __name, __tax_no, over_18, passport_no, dob, ticket_type, ticket_price):
+    def __init__(self, __name, __tax_no, over_18, passport_no, dob, seat_type):
         super().__init__(__name, __tax_no, over_18)
         self._passport_no = passport_no
         self.dob = dob
-        self.ticket_type = ticket_type
-        self.ticket_price = ticket_price
+        self.seat_type = seat_type
 
     def get_passport_no(self):
         return self._passport_no
@@ -17,17 +14,20 @@ class Passengers(People):
     def get_dob(self):
         return self.dob
 
-    def set_ticket_type(self, ticket_type):
-        if self.over_18 is False and ticket_type == 'first class'.lower() or ticket_type == 'business class'.lower():
+    def get_seat_type(self):
+        return self.seat_type
+
+    def set_ticket_type(self, seat_type):
+        if self.over_18 is False and seat_type == 'first class'.lower() or seat_type == 'business class'.lower():
             return 'premium junior'
-        elif self.over_18 is False and ticket_type == 'standard'.lower():
+        elif self.over_18 is False and seat_type == 'standard'.lower():
             return 'standard junior'
         else:
-            if ticket_type == 'first class'.lower():
+            if seat_type == 'first class'.lower():
                 return 'first class'
-            elif ticket_type == 'business class'.lower():
-                return 'first class'
-            elif ticket_type == 'standard class'.lower():
+            elif seat_type == 'business class'.lower():
+                return 'business class'
+            elif seat_type == 'standard class'.lower():
                 return 'standard class'
 
     def get_ticket_price(self):
@@ -47,3 +47,12 @@ class Passengers(People):
             jp_price = 50
             return f'£{jp_price}'
 
+person1 = Passengers('Marcus', '236547A', True, 123454321, '01/01/2020','First class')
+print(person1.get_name())
+print(person1.get_tax_no())
+print(person1.get_over_18())
+print(person1.get_passport_no())
+print(person1.dob)
+print(person1.seat_type)
+print(person1.set_ticket_type(person1.seat_type))
+print(person1.get_ticket_price())
