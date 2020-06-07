@@ -18,7 +18,7 @@ class Staff(People):
         flight_sal = self.salary_per_flight
         return f'£{flight_sal:0,.2f}'
 
-staff1 = Staff('Marcus', '236547A', True, 'Trainee Devops Engineer', 'KLM', 150.00)
+staff1 = Staff('Marcus', '236547A', True, 'Trainee Devops Engineer', 'KLM', 550.00)
 
 print(staff1.get_name())
 print(staff1.get_tax_no())
