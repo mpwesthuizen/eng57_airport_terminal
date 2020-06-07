@@ -1,7 +1,6 @@
 from random import randint
 from project.people_class import *
 
-
 class Passengers(People):
     def __init__(self, __name, __tax_no, over_18, passport_no, dob, ticket_type=None, ticket_price=None,
                  boarding_pass=None):
