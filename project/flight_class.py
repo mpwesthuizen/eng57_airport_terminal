@@ -1,4 +1,4 @@
-from project.terminal  import *
+from project.terminal import *
 # Todo: add a delete flight, airport assistant login credentials, enforce max capacity on passenger list.
 
 class Flight(Terminal):
