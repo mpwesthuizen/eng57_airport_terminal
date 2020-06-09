@@ -1,20 +1,27 @@
 class People:
-    def __init__(self, __name='', __tax_no='', over_18=True or False):
-        self.__name = __name
-        self.__tax_no = __tax_no
-        self.over_18 = over_18
 
-    def get_name(self):
-        return self.__name.title()
+    def __init__(self, full_name, dob, nationality):
+        self.__name = full_name
+        self.__dob = dob
+        self.nationality = nationality
 
-    def get_tax_no(self):
-        return self.__tax_no
+    def get_full_name(self):
+        return self.__name
 
-    def get_over_18(self):
-        return self.over_18
+    def set_full_name(self, new_name):
+        self.__name = new_name
+        return f"Name overridden to:  {self.__name}"
 
-# person1 = People('Marcus', '236547A', True)
-#
-# print(person1.get_name())
-# print(person1.get_tax_no())
-# print(person1.get_over_18())
+    def get_dob(self):
+        return self.__dob
+
+    def set_dob(self, new_dob):
+        self.__dob = new_dob
+        return "DOB for {self.__name} overridden to:  {self.__dob}"
+
+    def get_nationality(self):
+        return self.nationality
+
+    def set_nationality(self, new_nation):
+        self.nationality = new_nation
+        return "Nationality for {self.__name} overridden to:  {self.nationality}"

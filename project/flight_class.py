@@ -1,21 +1,17 @@
-from project.terminal import *
-# Todo: add a delete flight, airport assistant login credentials, enforce max capacity on passenger list.
-
-class Flight(Terminal):
+class Flight:
     instances = []
 
-    def __init__(self, flight, departure, destination, flight_date, flight_time, plane, capacity, flight_list=None):
+    def __init__(self, flight, departure, destination, flight_time, plane, capacity, manifest=None):
         self.flight = flight.capitalize()
-        self.departure = int(departure)
+        self.departure = departure
         Flight.instances.append(self.flight)
         self.destination = destination.capitalize()
-        self.flight_date = flight_date
         self.flight_time = flight_time
         self.plane = plane.capitalize()
         self.capacity = capacity
-        self.flight_list = flight_list
-        if flight_list is None:
-            self.flight_list = []
+        self.manifest = manifest
+        if manifest is None:
+            self.manifest = []
 
     def delay(self, new_time):
         self.departure = new_time
@@ -29,12 +25,18 @@ class Flight(Terminal):
     def show_report(self):
         report = vars(self)
         for key, value in report.items():
-            print(key.capitalize(), ": ", value)
+            if key != "manifest":
+                print(key.capitalize(), ": ", value)
 
-    def append_flight_list(self, passenger):
-        self.flight_list.append(passenger)
+    def append_manifest(self, person):
+        self.manifest.append(person)
 
-    def show_flight_list(self):
-        print(f"\nFlight list for personnel on flight {self.flight}: ")
-        for person in self.flight_list:
+    def show_manifest(self):
+        print(f"\nManifest for personnel on flight {self.flight}: ")
+        for person in self.manifest:
             print(vars(person))
+
+
+pioneer = Flight('Pioneer', '0800', 'Paris', '1h20', 'A320', 150)
+taurus = Flight('Taurus', '0815', 'Munich', '1h50', 'A321', 200)
+achilles = Flight('Achilles', '0820', 'Dusseldorf', '1h35', 'A320', 150)
