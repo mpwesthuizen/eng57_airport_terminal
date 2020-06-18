@@ -1,10 +1,51 @@
-import unittest
+from project.flight_class import *
+from project.passengers_class import *
+from project.staff_class import *
+
+pioneer = Flight('Pioneer', '08:00', 'Paris', '1h20m', 'A321', 300)
+
+# ----------------------------------------------------------
+# Test 1: Making adjustment to flight report
+print("Testing method: delay()")
+print("Delaying departure time by one hour...")
+pioneer.delay("09:45")
+print("Result: ", pioneer.departure == "09:45")
+
+print("\nTesting method: divert()")
+print("Changing destination from Paris to Toulouse...")
+pioneer.divert("Toulouse")
+print("Result: ", pioneer.destination == "Toulouse")
+
+print("\nTesting method: alter_aircraft()")
+print("Changing aircraft from A321 to A320...")
+pioneer.alter_aircraft("A320")
+print("Result: ", pioneer.plane == "A320")
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)
+# ---------------------------------------------------------
+# Test 2: Produce full report - aesthetically
+print("\nTesting: show_report()...")
 
+pioneer.show_report()
 
-if __name__ == '__main__':
-    unittest.main()
+# ----------------------------------------------------------
+# Test 1: Append items to report list
+print("\nTesting: append_manifest()...")
+print(f"Current manifest: {pioneer.manifest}")
+pioneer.append_manifest(crew1)
+pioneer.append_manifest(crew2)
+pioneer.append_manifest(pilot1)
+pioneer.append_manifest(copilot1)
+pioneer.append_manifest(passenger1)
+pioneer.append_manifest(passenger2)
+pioneer.append_manifest(passenger3)
+
+if passenger1 and passenger2 and passenger3 in pioneer.manifest:
+    print("Append complete: ", True)
+else:
+    print("Append complete: ", False)
+
+# ----------------------------------------------------------
+# Test 2: Show manifest
+print("\nTesting method:  full_manifest()...")
+pioneer.show_manifest()
